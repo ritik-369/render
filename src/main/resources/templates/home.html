@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .table {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-dark th {
+            background-color: #343a40 !important;
+            border-color: #454d55;
+            color: #ffffff;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+
+        .btn-warning, .btn-danger {
+            margin-right: 5px;
+        }
+
+        .btn-warning:hover, .btn-danger:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="navbar-brand">Spring CRUD</div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Students</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/addStudent}" class="btn btn-primary btn-sm mb-3">Add New Student</a>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Student Id</th>
+            <th>Student Name</th>
+            <th>Student Email</th>
+            <th>Student Gender</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student:${stuList}">
+            <td th:text="${student.sId}"></td>
+            <td th:text="${student.sName}"></td>
+            <td th:text="${student.sGmail}"></td>
+            <td th:text="${student.sGender}"></td>
+            <td>
+                <a th:href="@{/updateStudent/{id}(id=${student.sId})}" class="btn btn-warning">Update</a>
+                <a th:href="@{/deletestudent/{id}(id=${student.sId})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

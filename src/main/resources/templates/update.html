@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .styled-form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+        }
+
+        .gender-radio-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="navbar-brand">Update Student</div>
+</nav>
+
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-6 col-sm-6 card">
+            <h1 class="text-center">Update Student</h1>
+            <div class="card-body">
+                <form th:action="@{/update}" method="post" th:object="${student}" class="styled-form">
+                    <div class="form-group">
+                        <label>Student Id (cannot be changed)</label>
+                        <input type="number" name="sId" th:field="*{sId}" readonly class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Student Name</label>
+                        <input type="text" name="sName" th:field="*{sName}" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Student Gmail</label>
+                        <input type="text" name="sGmail" th:field="*{sGmail}" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="gender-radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="sGender" value="Male" id="Male">
+                                MALE
+                            </label>
+
+                            <label class="radio-label">
+                                <input type="radio" name="sGender" value="Female" id="Female">
+                                FEMALE
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/  // Use CDATA to avoid syntax issues with Thymeleaf and JavaScript
+    var student = {
+        id: /*[[${student.sId}]]*/,
+        name: /*[[${student.sName}]]*/,
+        gmail: /*[[${student.sGmail}]]*/,
+        gender: /*[[${student.sGender}]]*/
+    };
+    console.log(student.gender);
+    document.getElementById(student.gender).checked=true;
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .gender-radio-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="navbar-brand">Create New Student</div>
+</nav>
+
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-6 col-sm-6 card">
+            <h1 class="text-center">Create New Student</h1>
+            <div class="card-body">
+                <form th:action="@{/create}" method="post">
+                    <div class="form-group">
+                        <label>Student Name</label>
+                        <input type="text" name="sName" class="form-control" placeholder="Enter Student Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Student Gmail</label>
+                        <input type="text" name="sGmail" class="form-control" placeholder="Enter Gmail Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="gender-radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="sGender" value="Male" id="Male">
+                                MALE
+                            </label>
+
+                            <label class="radio-label">
+                                <input type="radio" name="sGender" value="Female" id="Female">
+                                FEMALE
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="box-footer text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
